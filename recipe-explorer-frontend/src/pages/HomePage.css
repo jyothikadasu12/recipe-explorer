@@ -1,99 +1,246 @@
 
+/* =====================================
+   HOME PAGE
+===================================== */
+
 .home-page {
   padding-top: 30px;
 }
 
-.home-hero {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  min-height: 390px;
+/* =====================================
+   FEATURED CAROUSEL
+===================================== */
+
+.featured-carousel {
   overflow: hidden;
-  border-radius: 24px;
-  padding: clamp(28px, 5vw, 58px);
-  color: #fff9f2;
-  background:
-    radial-gradient(circle at 78% 25%, rgb(231 151 91 / 35%), transparent 30%),
-    linear-gradient(120deg, #392c24, #64412f);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background: #fff;
 }
 
-.home-hero-content {
+.featured-hero {
   position: relative;
-  z-index: 1;
-}
-
-.eyebrow {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin: 0 0 15px;
-  color: var(--color-brand);
+  min-height: 440px;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 65px);
+  color: #fff9f2;
+  background: linear-gradient(120deg, #392c24, #8d4b2d);
+}
+
+.featured-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: heroFade 0.5s ease-in-out;
+}
+
+.featured-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(40 29 22 / 92%) 0%,
+    rgb(40 29 22 / 76%) 48%,
+    rgb(40 29 22 / 22%) 100%
+  );
+}
+
+.featured-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.featured-hero .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: #f4c19d;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
 
-.home-hero .eyebrow {
-  color: #f0c4a2;
-}
-
-.home-hero h1 {
+.featured-hero h1 {
   margin: 0;
-  font-size: clamp(2.7rem, 5.5vw, 4.5rem);
-  line-height: 1.04;
-  letter-spacing: -0.065em;
+  font-size: clamp(2.5rem, 5vw, 4.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
 }
 
-.home-hero h1 span {
+.featured-hero h1 span {
   color: #f2b58a;
 }
 
-.home-hero-content > p {
-  max-width: 460px;
+.featured-hero-content > p {
+  max-width: 470px;
   margin: 20px 0 26px;
-  color: #e5d8cd;
+  color: #f0e2d7;
   line-height: 1.7;
 }
+
+.featured-hero-content > p strong {
+  color: #fff;
+}
+
+/* HERO BUTTONS */
 
 .home-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
-.home-hero .secondary-button {
-  border-color: rgb(255 255 255 / 24%);
-  color: white;
-  background: rgb(255 255 255 / 8%);
+.featured-hero .secondary-button {
+  color: #fff;
+  border-color: rgb(255 255 255 / 35%);
+  background: rgb(255 255 255 / 10%);
 }
 
-.home-hero-art {
-  min-height: 240px;
+.featured-hero .secondary-button:hover {
+  background: rgb(255 255 255 / 20%);
+}
+
+/* =====================================
+   HERO NAVIGATION
+===================================== */
+
+.hero-carousel-controls {
+  position: absolute;
+  z-index: 2;
+  right: 28px;
+  bottom: 25px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
+  color: white;
+  font-size: 0.85rem;
 }
 
-.hero-art-circle {
+.hero-carousel-controls button,
+.carousel-arrow {
   display: grid;
-  width: clamp(150px, 20vw, 235px);
-  aspect-ratio: 1;
+  width: 40px;
+  height: 40px;
   place-items: center;
-  border: 1px solid rgb(255 255 255 / 25%);
+  border: 0;
   border-radius: 50%;
-  color: #ffe0c5;
-  background: rgb(255 255 255 / 7%);
-  box-shadow: 0 0 0 20px rgb(255 255 255 / 3%),
-    0 0 0 42px rgb(255 255 255 / 2%);
+  color: #a84f2c;
+  background: #fffaf5;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.hero-art-note {
-  margin-top: 25px;
-  color: #e9d3c0;
-  font-size: 0.9rem;
-  font-style: italic;
+.hero-carousel-controls button:hover,
+.carousel-arrow:hover:not(:disabled) {
+  color: white;
+  background: #b95e37;
+  transform: scale(1.06);
 }
+
+.carousel-status {
+  position: absolute;
+  z-index: 2;
+  bottom: 36px;
+  left: clamp(28px, 5vw, 65px);
+  color: #f4e4d9;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* =====================================
+   RECIPE THUMBNAIL CAROUSEL
+===================================== */
+
+.recipe-carousel {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 25px clamp(16px, 5vw, 65px);
+  background: #fffdfb;
+}
+
+.carousel-track {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.carousel-recipe-card {
+  display: flex;
+  min-width: 0;
+  min-height: 110px;
+  overflow: hidden;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  text-align: left;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-recipe-card:hover,
+.carousel-recipe-card.active {
+  border-color: #b95e37;
+  box-shadow: 0 5px 18px rgb(94 49 28 / 10%);
+}
+
+.carousel-recipe-image {
+  display: grid;
+  width: 42%;
+  min-width: 90px;
+  height: 110px;
+  flex-shrink: 0;
+  place-items: center;
+  color: #b95e37;
+  background: #f7e8df;
+}
+
+.carousel-recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-recipe-info {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+  padding: 10px 8px 10px 0;
+}
+
+.carousel-recipe-info strong {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #382a22;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.carousel-recipe-info span {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =====================================
+   DISCOVERY SECTION
+===================================== */
 
 .home-discovery,
 .home-saved-section {
@@ -131,6 +278,10 @@
   color: var(--color-brand-dark);
 }
 
+/* =====================================
+   SHORTCUT CARDS
+===================================== */
+
 .home-shortcuts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -145,6 +296,7 @@
   border-radius: 15px;
   padding: 20px;
   background: white;
+  transition: 0.2s ease;
 }
 
 .shortcut-card:hover {
@@ -174,6 +326,10 @@
   line-height: 1.5;
 }
 
+/* =====================================
+   SAVED RECIPE GRID
+===================================== */
+
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -195,12 +351,34 @@
   margin-top: 8px;
 }
 
-@media (max-width: 850px) {
-  .home-hero {
-    grid-template-columns: 1fr;
+/* =====================================
+   ANIMATION
+===================================== */
+
+@keyframes heroFade {
+  from {
+    opacity: 0.5;
   }
 
-  .home-hero-art {
+  to {
+    opacity: 1;
+  }
+}
+
+/* =====================================
+   TABLET RESPONSIVE
+===================================== */
+
+@media (max-width: 900px) {
+  .featured-hero {
+    min-height: 390px;
+  }
+
+  .carousel-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .carousel-recipe-card:nth-child(3) {
     display: none;
   }
 
@@ -209,11 +387,18 @@
   }
 }
 
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
 @media (max-width: 600px) {
-  .home-hero {
-    min-height: 0;
-    padding: 28px 22px;
-    border-radius: 18px;
+  .featured-hero {
+    min-height: 390px;
+    padding: 28px 22px 85px;
+  }
+
+  .featured-hero h1 {
+    font-size: 2.5rem;
   }
 
   .home-hero-actions {
@@ -223,6 +408,44 @@
 
   .home-hero-actions a {
     width: 100%;
+  }
+
+  .hero-carousel-controls {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .carousel-status {
+    bottom: 33px;
+    left: 22px;
+  }
+
+  .recipe-carousel {
+    gap: 8px;
+    padding: 18px 10px;
+  }
+
+  .carousel-track {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-recipe-card:nth-child(2),
+  .carousel-recipe-card:nth-child(3) {
+    display: none;
+  }
+
+  .carousel-recipe-card {
+    min-height: 95px;
+  }
+
+  .carousel-recipe-image {
+    height: 95px;
+  }
+
+  .carousel-arrow {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
   }
 
   .home-section-intro {
